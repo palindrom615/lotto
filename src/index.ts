@@ -1,3 +1,3 @@
 export const issueLotto = () => {
-  return new Array(6);
+  return [1, 1, 1, 1, 1, 1];
 };
