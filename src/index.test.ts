@@ -12,3 +12,8 @@ test("각 숫자는 1~45", () => {
     expect(number).toBeLessThanOrEqual(45);
   }
 });
+
+test("중복되는 값 x", () => {
+  const lotto = issueLotto();
+  expect(Array.from(new Set(lotto))).toHaveLength(6);
+});
