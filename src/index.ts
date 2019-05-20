@@ -1,1 +1,3 @@
-console.log(1)
+export const issueLotto = () => {
+  return new Array(6);
+};
