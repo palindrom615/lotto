@@ -1,4 +1,4 @@
-import { issueLotto, drawLotto, buyLottos, winningAmount, calcInterest } from "./index";
+import { issueLotto, drawLotto, buyLottos, winningAmount, calcInterest } from "./lotto";
 
 test("로또 한 장은 6개 번호", () => {
   const lotto = issueLotto();
