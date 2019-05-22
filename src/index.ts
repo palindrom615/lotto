@@ -36,7 +36,7 @@ export type Ticket = [number, number, number, number, number, number];
 
 export type Winning = [Ticket, number];
 
-export const winningAmount = (lotto: Ticket, [numbers, bonus]: Winning) => {
+export const winningAmount = (lotto: Ticket, [numbers, bonus]: Winning): number => {
   const wonNumbers = lotto.reduce(
     (prev, curr) => (numbers.includes(curr) ? prev + 1 : prev),
     0
@@ -46,4 +46,11 @@ export const winningAmount = (lotto: Ticket, [numbers, bonus]: Winning) => {
   if (wonNumbers === 5) return lotto.includes(bonus) ? 30000000 : 1500000;
   if (wonNumbers === 6) return 2000000000;
   return 0;
+};
+
+export const calcInterest = (lottos: Ticket[], winning: Winning) => {
+  const sum: number = lottos
+    .map(lotto => winningAmount(lotto, winning))
+    .reduce((prev, curr) => prev + curr);
+  return sum / (lottos.length * 1000)
 };

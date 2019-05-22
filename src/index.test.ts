@@ -1,4 +1,4 @@
-import { issueLotto, drawLotto, buyLottos, winningAmount } from "./index";
+import { issueLotto, drawLotto, buyLottos, winningAmount, calcInterest } from "./index";
 
 test("로또 한 장은 6개 번호", () => {
   const lotto = issueLotto();
@@ -40,7 +40,22 @@ test("당첨 금액은 고정", () => {
   expect(winningAmount([1, 2, 3, 4, 5, 6], [[1, 2, 3, 4, 5, 7], 8])).toBe(
     1500000
   );
-  expect(winningAmount([1,2,3,4,5,6], [[1,2,3,4,8,9], 10])).toBe(50000);
-  expect(winningAmount([1,2,3,4,5,6], [[1,2,3,7,8,9], 10])).toBe(5000);
-  expect(winningAmount([1,2,3,4,5,6], [[7,8,9,10,11,12], 13])).toBe(0);
+  expect(winningAmount([1, 2, 3, 4, 5, 6], [[1, 2, 3, 4, 8, 9], 10])).toBe(
+    50000
+  );
+  expect(winningAmount([1, 2, 3, 4, 5, 6], [[1, 2, 3, 7, 8, 9], 10])).toBe(
+    5000
+  );
+  expect(winningAmount([1, 2, 3, 4, 5, 6], [[7, 8, 9, 10, 11, 12], 13])).toBe(
+    0
+  );
+});
+
+test("수익률을 계산해 출력", () => {
+  expect(
+    calcInterest(
+      [[1, 2, 3, 4, 5, 6], [7, 8, 9, 10, 11, 12]],
+      [[1, 2, 3, 13, 14, 15], 7]
+    )
+  ).toBe(2.5);
 });
